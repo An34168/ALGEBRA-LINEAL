@@ -1,0 +1,13 @@
+import pandas as pd
+df = pd.read_csv(r'C:\Users\Janeth Yanez\OneDrive\Documentos\TRABAJOS DE DISEÑO 3D\PROYECTOS DE PYTHON\books-en.csv', encoding='latin1', delimiter=';')
+
+unique_publishers = df['Publisher'].unique()  
+print("Unique list of publishers:")
+for publisher in unique_publishers:
+    print(publisher)
+print("\n" + "-"*40 + "\n")
+top_books = df.sort_values(by='Downloads', ascending=False).head(20)
+print("Top 20 most popular books:")
+for index, row in top_books.iterrows():
+    print(f"{row['Book-Title']} - {row['Downloads']}")
+

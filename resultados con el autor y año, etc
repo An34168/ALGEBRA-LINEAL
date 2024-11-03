@@ -1,0 +1,17 @@
+import pandas as pd
+import random
+df = pd.read_csv(r'C:\Users\Janeth Yanez\OneDrive\Documentos\TRABAJOS DE DISEÑO 3D\PROYECTOS DE PYTHON\books-en.csv', encoding='latin1', delimiter=';')
+df['Year-Of-Publication'] = pd.to_numeric(df['Year-Of-Publication'], errors='coerce')
+sample_books = df.sample(n=20, random_state=1) 
+bibliographic_references = []
+for index, row in sample_books.iterrows():
+    author = row['Book-Author']
+    title = row['Book-Title']
+    year = row['Year-Of-Publication']
+    reference = f"{author}. {title} - {year}"
+    bibliographic_references.append(reference)
+with open("bibliographic_references.txt", "w", encoding="utf-8") as file:
+    for i, reference in enumerate(bibliographic_references, start=1):
+        file.write(f"{i}. {reference}\n")
+
+print("Bibliographic references have been saved to 'bibliographic_references.txt'")

@@ -1,0 +1,23 @@
+import pandas as pd
+df = pd.read_csv(r'C:\Users\Janeth Yanez\OneDrive\Documentos\TRABAJOS DE DISEÑO 3D\PROYECTOS DE PYTHON\books-en.csv', encoding='latin1', delimiter=';')
+df['Year-Of-Publication'] = pd.to_numeric(df['Year-Of-Publication'], errors='coerce')
+author_to_search = 'Amy Tan'
+start_year = 1991
+end_year = 1996
+books_by_author = df[df['Book-Author'] == author_to_search]
+print("Books found by author:", len(books_by_author))  
+books_by_year = books_by_author[(books_by_author['Year-Of-Publication'] >= start_year) &
+                                (books_by_author['Year-Of-Publication'] <= end_year)]
+print("Books found in the year range:", len(books_by_year)) 
+Name = books_by_year['Book-Title'].tolist()
+Value = books_by_year['Year-Of-Publication'].tolist()
+print("Name:", Name)
+print("Value:", Value)
+
+
+
+
+
+
+
+

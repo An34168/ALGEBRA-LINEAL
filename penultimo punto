@@ -1,0 +1,15 @@
+import xml.etree.ElementTree as ET
+
+tree = ET.parse(r'C:\Users\Janeth Yanez\OneDrive\Documentos\TRABAJOS DE DISEÑO 3D\PROYECTOS DE PYTHON\currency.xml')
+root = tree.getroot()
+Name = []
+Value = []
+for valute in root.findall('Valute'):
+    name = valute.find('Name').text
+    value = float(valute.find('Value').text.replace(',', '.'))  
+    Name.append(name)
+    Value.append(value)
+print("Name:", Name)
+print("Value:", Value)
+
+
